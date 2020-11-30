@@ -73,6 +73,17 @@ Resources:
           pip3 install ec2instanceconnectcli
           yum install amazon-ecr-credential-helper -y
           
+          aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 095631420917.dkr.ecr.us-east-1.amazonaws.com
+
+          docker tag todo-app:latest 095631420917.dkr.ecr.us-east-1.amazonaws.com/student1-repo/todo-app:latest
+
+          docker push 095631420917.dkr.ecr.us-east-1.amazonaws.com/student1-repo/todo-app:latest
+
+          docker pull 095631420917.dkr.ecr.us-east-1.amazonaws.com/student1-repo/todo-app:latest
+
+          docker run --name todo -dp 80:3000 095631420917.dkr.ecr.us-east-1.amazonaws.com/student1-repo/todo-app:latest
+
+
           docker swarm init
           
           ******docker swarm join --token <worker_token> <manager_ip>:2377
